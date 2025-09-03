@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ผลกระทบของโซเชียลมีเดียต่อเยาวชนไทย</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-amber-50 text-gray-900 font-bold">
+    <nav class="bg-red-900 text-white px-8 py-4 flex justify-between items-center shadow-md">
+      <h1 class="text-2xl font-bold">ผลกระทบของโซเชียลมีเดียต่อเยาวชนไทย</h1>
+      <ul class="flex gap-6">
+        <li><a href="heroes.html">หน้าแรก</a></li>
+        <li><a href="about.html">เกี่ยวกับ</a></li>
+        <li><a href="units.html">หน่วยการเรียนรู้</a></li>
+        <li><a href="timeline.html">สรุปเนื้อหา</a></li>
+        <li><a href="resources.html">แหล่งข้อมูล</a></li>
+        <li><a href="quiz.html">แบบทดสอบ</a></li>
+      </ul>
+    </nav>
+
+    <section class="p-8 max-w-3xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6 text-center">แบบทดสอบท้ายหน่วย: โซเชียลมีเดียกับเยาวชนไทย</h2>
+      <form id="quizForm" class="space-y-6">
+        <div>
+          <p class="font-semibold">1: ข้อใดคือความหมายของโซเชียลมีเดีย?</p>
+          <label><input type="radio" name="q1" value="a"> ช่องทางการสื่อสารเฉพาะองค์กร</label><br>
+          <label><input type="radio" name="q1" value="b"> สื่อที่ใช้ติดต่อสื่อสารผ่านอินเทอร์เน็ตแบบโต้ตอบได้</label><br>
+          <label><input type="radio" name="q1" value="c"> การสื่อสารเฉพาะภาครัฐ</label>
+        </div>
+        <div>
+          <p class="font-semibold">2: แพลตฟอร์มใดได้รับความนิยมสูงในหมู่เยาวชนไทย?</p>
+          <label><input type="radio" name="q2" value="a"> LinkedIn</label><br>
+          <label><input type="radio" name="q2" value="b"> TikTok</label><br>
+          <label><input type="radio" name="q2" value="c"> Reddit</label>
+        </div>
+        <div>
+          <p class="font-semibold">3: ข้อใดคือตัวอย่างของผลกระทบด้านบวกจากโซเชียลมีเดีย?</p>
+          <label><input type="radio" name="q3" value="a"> เสพติดการใช้โทรศัพท์</label><br>
+          <label><input type="radio" name="q3" value="b"> การรบกวนการนอนหลับ</label><br>
+          <label><input type="radio" name="q3" value="c"> การเรียนรู้ผ่านสื่อการศึกษาออนไลน์</label>
+        </div>
+        <div>
+          <p class="font-semibold">4: ผลกระทบด้านลบของโซเชียลมีเดียคือข้อใด?</p>
+          <label><input type="radio" name="q4" value="a"> การแบ่งปันความรู้ใหม่ๆ</label><br>
+          <label><input type="radio" name="q4" value="b"> การเกิดภาวะซึมเศร้าในวัยรุ่น</label><br>
+          <label><input type="radio" name="q4" value="c"> การประชาสัมพันธ์กิจกรรมสร้างสรรค์</label>
+        </div>
+        <div>
+          <p class="font-semibold">5: ข้อใดคือวิธีการเสริมสร้างภูมิคุ้มกันในการใช้โซเชียลมีเดีย?</p>
+          <label><input type="radio" name="q5" value="a"> ใช้เวลาอยู่บนหน้าจอตลอดวัน</label><br>
+          <label><input type="radio" name="q5" value="b"> พัฒนาทักษะการคิดวิเคราะห์ข่าวสาร</label><br>
+          <label><input type="radio" name="q5" value="c"> หลีกเลี่ยงการใช้อินเทอร์เน็ตโดยสิ้นเชิง</label>
+        </div>
+        <div>
+          <p class="font-semibold">6: การใช้โซเชียลมีเดียอย่างสร้างสรรค์ควรเป็นอย่างไร?</p>
+          <label><input type="radio" name="q6" value="a"> แชร์ข้อมูลเท็จเพื่อความสนุก</label><br>
+          <label><input type="radio" name="q6" value="b"> โพสต์ข้อความดูหมิ่นผู้อื่น</label><br>
+          <label><input type="radio" name="q6" value="c"> สร้างเนื้อหาที่มีประโยชน์และสร้างแรงบันดาลใจ</label>
+        </div>
+
+        <button type="button" onclick="checkAnswers()" class="bg-red-900 text-white px-6 py-2 rounded-lg shadow hover:bg-red-700">ตรวจคำตอบ</button>
+      </form>
+      <div id="result" class="mt-6 text-xl font-bold text-center"></div>
+    </section>
+
+    <script>
+      function checkAnswers() {
+        const answers = {
+          q1: "b",
+          q2: "b",
+          q3: "c",
+          q4: "b",
+          q5: "b",
+          q6: "c"
+        };
+        let score = 0;
+        for (let q in answers) {
+          const selected = document.querySelector(`input[name="${q}"]:checked`);
+          if (selected && selected.value === answers[q]) {
+            score++;
+          }
+        }
+        document.getElementById("result").innerText = `คุณได้คะแนน ${score}/6`;
+      }
+    </script>
+  </body>
+</html>
